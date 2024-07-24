@@ -1,6 +1,6 @@
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 
-dotenv.config({ path: "./.env.deploy" });
+dotenv.config({ path: './.env.deploy' });
 
 const { DEPLOY_USER, DEPLOY_HOST, DEPLOY_REF, DEPLOY_PATH, DEPLOY_REPO } =
   process.env;
@@ -8,13 +8,13 @@ const { DEPLOY_USER, DEPLOY_HOST, DEPLOY_REF, DEPLOY_PATH, DEPLOY_REPO } =
 module.exports = {
   deploy: {
     production: {
-      NODE_ENV: "production",
+      NODE_ENV: 'production',
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      "post-deploy": "cd frontend && yarn install && yarn build",
+      'post-deploy': 'cd frontend && yarn install && yarn build',
     },
   },
 };
