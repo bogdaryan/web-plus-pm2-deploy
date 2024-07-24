@@ -25,10 +25,10 @@ class Api {
 
   addCard({ name, link }) {
     return fetch(`${this._address}/cards`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${this._token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name,
@@ -39,10 +39,10 @@ class Api {
 
   removeCard(cardId) {
     return fetch(`${this._address}/cards/${cardId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
         Authorization: `Bearer ${this._token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     }).then(getResponse);
   }
@@ -51,17 +51,17 @@ class Api {
     return fetch(`${this._address}/users/me`, {
       headers: {
         Authorization: `Bearer ${this._token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     }).then(getResponse);
   }
 
   setUserInfo({ name, about }) {
     return fetch(`${this._address}/users/me`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
         Authorization: `Bearer ${this._token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name,
@@ -72,10 +72,10 @@ class Api {
 
   setUserAvatar({ avatar }) {
     return fetch(`${this._address}/users/me/avatar`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
         Authorization: `Bearer ${this._token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         avatar,
@@ -85,19 +85,19 @@ class Api {
 
   changeLikeCardStatus(cardId, like) {
     return fetch(`${this._address}/cards/${cardId}/likes`, {
-      method: like ? "PUT" : "DELETE",
+      method: like ? 'PUT' : 'DELETE',
       headers: {
         Authorization: `Bearer ${this._token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     }).then(getResponse);
   }
 
   register(email, password) {
     return fetch(`${this._address}/signup`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
     }).then(getResponse);
@@ -105,31 +105,31 @@ class Api {
 
   login(email, password) {
     return fetch(`${this._address}/signin`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
     })
       .then(getResponse)
       .then((data) => {
         this.setToken(data.token);
-        localStorage.setItem("jwt", data.token);
+        localStorage.setItem('jwt', data.token);
         return data;
       });
   }
 
   checkToken(token) {
     return fetch(`${this._address}/users/me`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     }).then(getResponse);
   }
 }
 // Замените на адрес вашего бэкенда
-const api = new Api("https://api.deploy-mesto.nomorepartiesco.ru/");
+const api = new Api('https://api.deploy-mesto.nomorepartiesco.ru');
 
 export default api;
