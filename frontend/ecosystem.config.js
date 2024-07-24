@@ -6,13 +6,6 @@ const { DEPLOY_USER, DEPLOY_HOST, DEPLOY_REF, DEPLOY_PATH, DEPLOY_REPO } =
   process.env;
 
 module.exports = {
-  apps: [
-    {
-      name: "api-service",
-      script: "./dist/app.js",
-    },
-  ],
-
   deploy: {
     production: {
       NODE_ENV: "production",
@@ -21,9 +14,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      "pre-deploy-local": `bash scripts/deployEnv.sh ${DEPLOY_USER}@${DEPLOY_HOST} ${DEPLOY_PATH}`,
-      "post-deploy":
-        "cd backend && yarn install && yarn build && pm2 startOrRestart ecosystem.config.js --env production",
+      "post-deploy": "cd frontend && yarn install && yarn build",
     },
   },
 };
