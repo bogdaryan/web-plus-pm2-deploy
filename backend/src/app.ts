@@ -13,11 +13,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 mongoose.connect(DB_ADDRESS);
 
-const corsOptions = {
-  origin: 'https://deploy-mesto.nomorepartiesco.ru',
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
