@@ -8,3 +8,6 @@
 ssh <username>@89.169.169.147
 
 ```
+
+https://deploy-mesto.nomorepartiesco.ru
+https://api.deploy-mesto.nomorepartiesco.ru
